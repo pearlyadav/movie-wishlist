@@ -1,0 +1,29 @@
+# To run the project - docker-compose up
+# To prune the project - docker-compose down;docker rmi hello_world_flaskapp1_1 hello_world_flaskapp2_1 
+version: "3.0"
+
+services:
+
+  flaskapp1: 
+    build: 
+      context: .
+      cache_from:
+      - flaskapp:latest
+    ports: 
+    - "80:5000"
+    volumes: 
+    - pendrive:/app/data
+
+  flaskapp2:
+    build: 
+      context: .
+      cache_from: 
+      - flaskapp:latest
+    ports:
+    - "81:5000"
+    volumes: 
+    - pendrive:/app/data
+
+volumes: 
+  pendrive:
+    external: true

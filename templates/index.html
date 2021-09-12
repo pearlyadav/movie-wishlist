@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        html{
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        table {
+          margin-left: auto;
+          margin-right: auto;
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 50%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        p{
+            color: black;
+            font-weight: bold;
+            font-size: xx-large;
+        }
+        </style>
+    <title>Movie Wishlist</title>
+</head>
+<body>
+
+    <h1>Movie Wishlist</h1>
+    <br>
+
+    {% if not isEmpty %}
+    
+    <table>
+        <th>Movie Name</th>
+        <th>Watched?</th>
+        {% for movie in result[True] %}
+        <tr>
+            <td> {{ movie }} </th>
+            <td> Yes </td>
+       </tr>
+       {% endfor %}
+       {% for movie in result[False] %}
+        <tr>
+            <td> {{ movie }} </th>
+            <td> No </td>
+       </tr>
+
+       {% endfor %}
+    </table>
+
+    {% else %}
+
+    <p>The Movie Wishlist is empty!</p>
+
+    {% endif %}
+
+</body>
+</html>
